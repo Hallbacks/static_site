@@ -1,7 +1,12 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../font/Roboto-Thin.ttf);
+}
+
 html {
     background-color: white;
-    font-family: Arial;
-    font-weight: lighter;
+    font-family: Roboto;
+    font-weight: bold;
     margin: 5%;
 }
 
@@ -58,7 +63,6 @@ a:hover {
 
 .smallProduct {
     background-color: #fff;
-    border: 1px solid #ddd;
     padding: 15px;
     width: 100%;
 }
