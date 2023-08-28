@@ -1,6 +1,6 @@
 fetch("https://kea-alt-del.dk/t7/api/products")
     .then((res) => res.json())
-    .then(showProduct);
+    .then(showProducts);
 
 function showProducts(products){
     // Looper og kalder showProduct
@@ -8,7 +8,7 @@ function showProducts(products){
 }
  
 function showProduct(product){
-    // console.log(product);
+    console.log(product);
     //Fange template i html
     const template = document.querySelector("#smallProductTemplate").content;
     //Lave en kopi
@@ -16,7 +16,7 @@ function showProduct(product){
     //Ændre indhold
     copy.querySelector("h3").textContent=product.productdisplayname;
     //Appende til DOM
-    document.querySelector("main").appendChild(copy);
+    document.querySelector("#shoppingGrid").appendChild(copy);
 }
 
 /*
