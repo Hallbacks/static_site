@@ -27,7 +27,6 @@ function showProduct(product){
         copy.querySelector(".discount").style.display = "none";
     }
 
-
     //Appende til DOM
     document.querySelector("#shoppingGrid").appendChild(copy);
 }

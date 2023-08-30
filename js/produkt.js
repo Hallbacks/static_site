@@ -7,14 +7,15 @@ fetch("https://kea-alt-del.dk/t7/api/products/1525")
     console.log(product);
     document.querySelector(".purchaseBox p.brand").textContent = product.brandname;
     document.querySelector(".purchaseBox h3").textContent = product.productdisplayname;
-    document.querySelector(".purchaseBox p.id").textContent = product.id;
-    document.querySelector(".purchaseBox p.color").textContent = product.basecolour;
+    document.querySelector(".purchaseBox p.id").textContent = `Item no. ${product.id}`;
+    document.querySelector(".purchaseBox p.color").textContent = `Color: ${product.basecolour}`;
     document.querySelector(".purchaseBox p.category").textContent = product.category;
     document.querySelector(".purchaseBox p.season").textContent = product.season;
     document.querySelector(".purchaseBox p.usage").textContent = product.usagetype;
-    document.querySelector(".purchaseBox p.price").textContent = product.price;
-    document.querySelector(".purchaseBox p.discount").textContent = product.discount;
-    
+    document.querySelector(".purchaseBox p.price").textContent = `DKK ${product.price},00`;
+    document.querySelector(".purchaseBox p.discount").textContent = `– ${product.discount}%`;
+
+
     // IMG
     document.querySelector("img").src = `http://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp`;
 }
