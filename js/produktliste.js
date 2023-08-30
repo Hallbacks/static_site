@@ -26,7 +26,7 @@ function showProduct(product){
         copy.querySelector(".discount").style.display = "none";
     }
 
-    copy.querySelector("p.readMore").setAttribute("href", `produkt.html?id=${product.id}`);
+    copy.querySelector(".readMore").setAttribute("href", `produkt.html?id=${product.id}`);
 
     //Appende til DOM
     document.querySelector("#shoppingGrid").appendChild(copy);
