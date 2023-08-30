@@ -15,15 +15,13 @@ h1 {
     font-weight: lighter;
 }
 
-.purchaseBox{
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
+.purchaseBox {
     background-color: #f4f4f4;
+    padding: 3%;
 }
 
 .navbar {
-    font-family: Breadly;
+    font-family: 'Breadly', sans-serif; /* Corrected font family name */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -80,13 +78,12 @@ a:hover {
 
 .price {
     font-weight: bolder;
-
 }
 
 .discount {
     color: #d9534f;
     margin-top: 10px;
-}.
+}
 
 .product img {
     max-width: 100%;
@@ -119,13 +116,7 @@ a:hover {
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 20px;
-}
-
-.categories-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    gap: 20px; /* Added gap for consistency */
 }
 
 .category-item {

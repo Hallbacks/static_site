@@ -16,7 +16,6 @@ function showProduct(product){
     copy.querySelector("h2").textContent=product.brandname;  
     copy.querySelector("h3").textContent = product.productdisplayname;    
     copy.querySelector("p.price").textContent = `${product.price},00 kr.`;
-
     copy.querySelector("p.soldOut").textContent = product.soldout === 0 ? "På lager" : "Udsolgt";
 
     copy.querySelector("img").src = `http://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp`;
@@ -26,6 +25,8 @@ function showProduct(product){
     } else {
         copy.querySelector(".discount").style.display = "none";
     }
+
+    copy.querySelector("p.readMore").setAttribute("href", `produkt.html?id=${product.id}`);
 
     //Appende til DOM
     document.querySelector("#shoppingGrid").appendChild(copy);
