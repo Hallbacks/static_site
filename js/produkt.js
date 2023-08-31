@@ -1,48 +1,50 @@
-fetch("https://kea-alt-del.dk/t7/api/products/1525")
-    .then((response) => response.json())
-    .then((data) => showProduct(data));
+//https://kea-alt-del.dk/t7/api/products/665
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get("id");
 
-    // INFO
-    function showProduct(product) {
-    console.log(product);
-    document.querySelector(".purchaseBox p.brand").textContent = product.brandname;
-    document.querySelector(".purchaseBox h3").textContent = product.productdisplayname;
-    document.querySelector(".purchaseBox p.color").textContent = `${product.basecolour}`;
-    document.querySelector(".purchaseBox p.category").textContent = product.category;
-    document.querySelector(".purchaseBox p.season").textContent = product.season;
-    document.querySelector(".purchaseBox p.usage").textContent = product.usagetype;
-    document.querySelector(".purchaseBox p.price").textContent = `DKK ${product.price},00`;
-    document.querySelector(".purchaseBox p.discount").textContent = `– ${product.discount}%`;
+// Loader
+if(!id){
+    setTimeout(()=>{
 
-
-    // IMG
-    document.querySelector("img").src = `http://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp`;
+        document.querySelector('.loader')?.remove()
+        }, 500)
 }
 
-//   "id": 1579,
-//   "gender": "Men",
-//   "category": "Apparel",
-//   "subcategory": "Topwear",
-//   "articletype": "Jackets",
-//   "basecolour": "Grey",
-//   "season": "Fall",
-//   "productionyear": 2010,
-//   "usagetype": "Sports",
-//   "productdisplayname": "Grey Second Skin Jacket",
-//   "parsed": 1,
-//   "soldout": 0,
-//   "relid": 1579,
-//   "price": 1599,
-//   "discount": 69,
-//   "variantname": "Grey Second Skin",
-//   "brandname": "Domyos",
-//   "brandbio": null,
-//   "brandimage": null,
-//   "agegroup": "Adults-Men",
-//   "colour1": "",
-//   "colour2": "",
-//   "fashiontype": "Fashion",
-//   "materialcaredesc": null,
-//   "sizefitdesc": null,
-//   "description": "<p style=\"text-align: justify;\">1. Anatomical inserts adjust to the movements<br />2. Flat and rolled seams ensure a comfortable Fit<br />3. Elasticity - With spandex<br />4. Material - 95% cotton &amp;  5% spandex<br /><br />This is the ultimate piece of jacket for any feel-good sport activity. The feel of a second skin takes off that extra weight of a jacket. This is an ideal buy and suited for any kind of activity.</p>",
-//   "styledesc": null
+// Promise .then() .finally()
+fetch("https://kea-alt-del.dk/t7/api/products/" + id)
+  .then((response) => response.json())
+  .then((data) => showProduct(data))
+//   .then((data) => document.querySelector('.loader')?.remove())
+
+function showProduct(product) {
+  console.log(product);
+
+  document.querySelector(".produkt_info .model-name").textContent =
+    product.productdisplayname;
+
+  // I Dont Understand two h3 how to reach the second one h4, præcis den:h4
+  document.querySelector(".produkt_info h4:nth-of-type(2) span").textContent =
+    product.basecolour;
+
+  document.querySelector(".produkt_info h4").textContent = product.gender;
+  document.querySelector(".produkt_info .description").textContent = product.description 
+  document.querySelector(".produkt_info .materialcaredesc").textContent = product.materialcaredesc 
+
+
+
+
+
+  document.querySelector(".produkt_info .brand").textContent =
+    product.brandname;
+  document.querySelector(
+    "img"
+  ).src = `https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp`;
+  
+
+//   Any thing above 300 ms will be observed by the user eye
+// Any thing above 16.666667 the user will notice that something has gone wrong but he couldn't observe it => 60 frames per seconds.
+  setTimeout(()=>{
+
+  document.querySelector('.loader')?.remove()
+  }, 500)
+}

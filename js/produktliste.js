@@ -1,4 +1,8 @@
-fetch("https://kea-alt-del.dk/t7/api/products?limit=12")
+const urlParams = new URLSearchParams(window.location.search);
+const category = urlParams.get("category");
+const categoryParam = category ? "?category="+category :''
+
+fetch("https://kea-alt-del.dk/t7/api/products?limit=15" + categoryParam)
     .then((res) => res.json())
     .then(showProducts);
 
@@ -26,8 +30,8 @@ function showProduct(product){
         copy.querySelector(".discount").style.display = "none";
     }
 
-    copy.querySelector(".readMore").setAttribute("href", `produkt.html?id=${product.id}`);
-
+    copy.querySelector(".readMore a").setAttribute("href", `produkt.html?id=${product.id}`);
+    
     //Appende til DOM
     document.querySelector("#shoppingGrid").appendChild(copy);
 }
